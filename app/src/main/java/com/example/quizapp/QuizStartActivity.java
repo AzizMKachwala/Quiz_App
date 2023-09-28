@@ -122,27 +122,27 @@ public class QuizStartActivity extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculateCounts();
+//                calculateCounts();
                 String message = "Correct: " + correctCount + ", Wrong: " + wrongCount + ", Skip: " + skipCount;
                 Toast.makeText(QuizStartActivity.this, "" + message, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void calculateCounts() {
-        for (QuizQuestionModel question : quizQuestionModels) {
-            String selectedAnswer = answerList.get(quizQuestionModels.indexOf(question));
-            String correctAnswer = question.getCorrectAnswer();
-
-            if (selectedAnswer == null || selectedAnswer.isEmpty()) {
-                skipCount++;
-            } else if (selectedAnswer.equals(correctAnswer)) {
-                correctCount++;
-            } else {
-                wrongCount++;
-            }
-        }
-    }
+//    private void calculateCounts() {
+//        for (QuizQuestionModel question : quizQuestionModels) {
+//            String selectedAnswer = answerList.get(quizQuestionModels.indexOf(question));
+//            String correctAnswer = question.getCorrectAnswer();
+//
+//            if (selectedAnswer == null || selectedAnswer.isEmpty()) {
+//                skipCount++;
+//            } else if (selectedAnswer.equals(correctAnswer)) {
+//                correctCount++;
+//            } else {
+//                wrongCount++;
+//            }
+//        }
+//    }
 
     private void updateButtonVisibility() {
         btnPrevious.setVisibility(current > 0 ? View.VISIBLE : View.INVISIBLE);
