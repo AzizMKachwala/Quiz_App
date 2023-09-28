@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizStartActivity extends AppCompatActivity {
-
     List<QuizQuestionModel> quizQuestionModels;
     RecyclerView questionRecyclerView;
     List<String> answerList;
