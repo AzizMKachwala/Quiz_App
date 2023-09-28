@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_quiz"
     android:orientation="vertical"
+    android:layout_margin="@dimen/_10sdp"
     android:padding="@dimen/_10sdp"
     tools:context=".QuizStartActivity">
 
@@ -30,7 +31,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Previous"
-            android:visibility="invisible" />
+            android:textStyle="bold"
+            android:visibility="invisible"/>
 
         <Button
             android:id="@+id/btnNext"
@@ -39,7 +41,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Next" />
+            android:text="Next"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -50,7 +53,8 @@
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/_10sdp"
         android:gravity="center"
-        android:text="Skip" />
+        android:text="Skip"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/btnFinish"
@@ -60,5 +64,6 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:gravity="center"
         android:text="Finish And Generate Report"
+        android:textStyle="bold"
         android:visibility="gone" />
 </LinearLayout>

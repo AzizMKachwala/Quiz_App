@@ -20,7 +20,7 @@ public class QuizStartActivity extends AppCompatActivity {
     List<String> answerList;
     QuizQuestionAdapter quizQuestionAdapter;
     Button btnPrevious, btnNext, btnSkip, btnFinish;
-    int current = 0;
+    int currentPosition = 0;
 
     int correctCount = 0, wrongCount = 0, skipCount = 0;
 
@@ -46,31 +46,68 @@ public class QuizStartActivity extends AppCompatActivity {
         List<QuizAnswerModel> quizAnswerModels1 = new ArrayList<>();
         quizAnswerModels1.add(new QuizAnswerModel("A"));
         quizAnswerModels1.add(new QuizAnswerModel("B"));
-        quizAnswerModels1.add(new QuizAnswerModel("C"));
-        quizAnswerModels1.add(new QuizAnswerModel("D"));
         quizQuestionModels.add(new QuizQuestionModel("1. Letter A:", quizAnswerModels1, "A"));
 
         List<QuizAnswerModel> quizAnswerModels2 = new ArrayList<>();
-        quizAnswerModels2.add(new QuizAnswerModel("A"));
         quizAnswerModels2.add(new QuizAnswerModel("B"));
         quizAnswerModels2.add(new QuizAnswerModel("C"));
+        quizAnswerModels2.add(new QuizAnswerModel("D"));
         quizQuestionModels.add(new QuizQuestionModel("2. Letter B", quizAnswerModels2, "B"));
 
         List<QuizAnswerModel> quizAnswerModels3 = new ArrayList<>();
-        quizAnswerModels3.add(new QuizAnswerModel("A"));
-        quizAnswerModels3.add(new QuizAnswerModel("B"));
         quizAnswerModels3.add(new QuizAnswerModel("C"));
         quizAnswerModels3.add(new QuizAnswerModel("D"));
         quizAnswerModels3.add(new QuizAnswerModel("E"));
         quizQuestionModels.add(new QuizQuestionModel("3. Letter C", quizAnswerModels3, "C"));
 
         List<QuizAnswerModel> quizAnswerModels4 = new ArrayList<>();
-        quizAnswerModels4.add(new QuizAnswerModel("A"));
-        quizAnswerModels4.add(new QuizAnswerModel("B"));
-        quizAnswerModels4.add(new QuizAnswerModel("C"));
         quizAnswerModels4.add(new QuizAnswerModel("D"));
         quizAnswerModels4.add(new QuizAnswerModel("E"));
         quizQuestionModels.add(new QuizQuestionModel("4. Letter D", quizAnswerModels4, "D"));
+
+        List<QuizAnswerModel> quizAnswerModels5 = new ArrayList<>();
+        quizAnswerModels5.add(new QuizAnswerModel("D"));
+        quizAnswerModels5.add(new QuizAnswerModel("E"));
+        quizAnswerModels5.add(new QuizAnswerModel("F"));
+        quizQuestionModels.add(new QuizQuestionModel("5. Letter E", quizAnswerModels5, "E"));
+
+        List<QuizAnswerModel> quizAnswerModels6 = new ArrayList<>();
+        quizAnswerModels6.add(new QuizAnswerModel("D"));
+        quizAnswerModels6.add(new QuizAnswerModel("E"));
+        quizAnswerModels6.add(new QuizAnswerModel("F"));
+        quizAnswerModels6.add(new QuizAnswerModel("W"));
+        quizAnswerModels6.add(new QuizAnswerModel("X"));
+        quizAnswerModels6.add(new QuizAnswerModel("Y"));
+        quizAnswerModels6.add(new QuizAnswerModel("Z"));
+        quizQuestionModels.add(new QuizQuestionModel("6. Letter F", quizAnswerModels6, "F"));
+
+        List<QuizAnswerModel> quizAnswerModels7 = new ArrayList<>();
+        quizAnswerModels7.add(new QuizAnswerModel("E"));
+        quizAnswerModels7.add(new QuizAnswerModel("F"));
+        quizAnswerModels7.add(new QuizAnswerModel("G"));
+        quizQuestionModels.add(new QuizQuestionModel("7. Letter G", quizAnswerModels7, "G"));
+
+        List<QuizAnswerModel> quizAnswerModels8 = new ArrayList<>();
+        quizAnswerModels8.add(new QuizAnswerModel("E"));
+        quizAnswerModels8.add(new QuizAnswerModel("F"));
+        quizAnswerModels8.add(new QuizAnswerModel("G"));
+        quizAnswerModels8.add(new QuizAnswerModel("H"));
+        quizQuestionModels.add(new QuizQuestionModel("8. Letter H", quizAnswerModels8, "H"));
+
+        List<QuizAnswerModel> quizAnswerModels9 = new ArrayList<>();
+        quizAnswerModels9.add(new QuizAnswerModel("E"));
+        quizAnswerModels9.add(new QuizAnswerModel("F"));
+        quizAnswerModels9.add(new QuizAnswerModel("G"));
+        quizAnswerModels9.add(new QuizAnswerModel("H"));
+        quizAnswerModels9.add(new QuizAnswerModel("I"));
+        quizQuestionModels.add(new QuizQuestionModel("9. Letter I", quizAnswerModels9, "I"));
+
+        List<QuizAnswerModel> quizAnswerModels10 = new ArrayList<>();
+        quizAnswerModels10.add(new QuizAnswerModel("G"));
+        quizAnswerModels10.add(new QuizAnswerModel("H"));
+        quizAnswerModels10.add(new QuizAnswerModel("I"));
+        quizAnswerModels10.add(new QuizAnswerModel("J"));
+        quizQuestionModels.add(new QuizQuestionModel("10. Letter J", quizAnswerModels10, "J"));
 
         quizQuestionAdapter = new QuizQuestionAdapter(quizQuestionModels);
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false));
@@ -84,10 +121,10 @@ public class QuizStartActivity extends AppCompatActivity {
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current > 0) {
-                    current--;
-                    questionRecyclerView.scrollToPosition(current);
-//                    Toast.makeText(QuizStartActivity.this, "Clicked on Previous Button", Toast.LENGTH_SHORT).show();
+                if (currentPosition > 0) {
+                    currentPosition--;
+                    questionRecyclerView.scrollToPosition(currentPosition);
+//                  Toast.makeText(QuizStartActivity.this, "Clicked on Previous Button", Toast.LENGTH_SHORT).show();
                 }
                 updateButtonVisibility();
             }
@@ -96,9 +133,9 @@ public class QuizStartActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current < quizQuestionModels.size() - 1) {
-                    current++;
-                    questionRecyclerView.scrollToPosition(current);
+                if (currentPosition < quizQuestionModels.size() - 1) {
+                    currentPosition++;
+                    questionRecyclerView.scrollToPosition(currentPosition);
 //                    Toast.makeText(QuizStartActivity.this, "Clicked on Next Button", Toast.LENGTH_SHORT).show();
                 }
                 updateButtonVisibility();
@@ -108,9 +145,9 @@ public class QuizStartActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (current < quizQuestionModels.size() - 1) {
-                    current++;
-                    questionRecyclerView.scrollToPosition(current);
+                if (currentPosition < quizQuestionModels.size() - 1) {
+                    currentPosition++;
+                    questionRecyclerView.scrollToPosition(currentPosition);
 //                    Toast.makeText(QuizStartActivity.this, "Clicked on Skip Button", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(QuizStartActivity.this, "Last Question Reached", Toast.LENGTH_SHORT).show();
@@ -145,9 +182,9 @@ public class QuizStartActivity extends AppCompatActivity {
 //    }
 
     private void updateButtonVisibility() {
-        btnPrevious.setVisibility(current > 0 ? View.VISIBLE : View.INVISIBLE);
-        btnNext.setVisibility(current < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
-        btnFinish.setVisibility(current == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
+        btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
+        btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
+        btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
     }
 
 }

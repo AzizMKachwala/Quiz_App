@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +35,6 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
     @Override
     public void onBindViewHolder(@NonNull QuizQuestionViewHolder holder, @SuppressLint("RecyclerView") int position) {
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
-
         holder.txtQuestion.setText(quizQuestionModel.getQuestion());
 
         QuizAnswerAdapter answerAdapter = new QuizAnswerAdapter(quizQuestionModel.getQuizAnswerModels());
