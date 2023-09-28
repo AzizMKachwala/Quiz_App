@@ -33,7 +33,6 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
     @Override
     public void onBindViewHolder(@NonNull QuizQuestionViewHolder holder, int position) {
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
-        Toast.makeText(context, "Question Clicked", Toast.LENGTH_SHORT).show();
     }
 
     @Override
