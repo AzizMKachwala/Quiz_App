@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizMainActivity"
+    android:background="@drawable/gradient"
+    android:padding="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/imgLoading"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/quiz" />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:textSize="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgLoading"
+        android:layout_centerHorizontal="true"
+        android:text="Play Quiz" />
+</RelativeLayout>
