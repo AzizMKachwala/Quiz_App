@@ -37,9 +37,9 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
         holder.txtQuestion.setText(quizQuestionModel.getQuestion());
 
-        QuizAnswerAdapter answerAdapter = new QuizAnswerAdapter(quizQuestionModel.getQuizAnswerModels());
+        QuizAnswerAdapter quizAnswerAdapter = new QuizAnswerAdapter(quizQuestionModel.getQuizAnswerModels());
         holder.answerRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        holder.answerRecyclerView.setAdapter(answerAdapter);
+        holder.answerRecyclerView.setAdapter(quizAnswerAdapter);
     }
 
     @Override

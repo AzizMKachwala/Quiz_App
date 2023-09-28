@@ -21,7 +21,6 @@ public class QuizStartActivity extends AppCompatActivity {
     QuizQuestionAdapter quizQuestionAdapter;
     Button btnPrevious, btnNext, btnSkip, btnFinish;
     int currentPosition = 0;
-
     int correctCount = 0, wrongCount = 0, skipCount = 0;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})

@@ -36,8 +36,6 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         QuizAnswerModel quizAnswerModel = quizAnswerModels.get(position);
         holder.txtAnswer.setText(quizAnswerModel.getAnswer());
         holder.radioButton.setChecked(position == selectedPosition);
-
-
     }
 
     @Override
