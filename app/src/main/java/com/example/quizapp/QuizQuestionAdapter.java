@@ -1,5 +1,6 @@
 package com.example.quizapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -21,7 +23,6 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
         this.quizQuestionModels = quizQuestionModels;
     }
 
-
     @NonNull
     @Override
     public QuizQuestionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +32,14 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuizQuestionViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuizQuestionViewHolder holder, @SuppressLint("RecyclerView") int position) {
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
+
+        holder.txtQuestion.setText(quizQuestionModel.getQuestion());
+
+        QuizAnswerAdapter answerAdapter = new QuizAnswerAdapter(quizQuestionModel.getQuizAnswerModels());
+        holder.answerRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+        holder.answerRecyclerView.setAdapter(answerAdapter);
     }
 
     @Override

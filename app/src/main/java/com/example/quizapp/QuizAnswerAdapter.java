@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,10 +16,11 @@ import java.util.List;
 public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.QuizAnswerViewHolder> {
 
     Context context;
-    List<String> answerList;
+    List<QuizAnswerModel> quizAnswerModels;
+    int selectedPosition = -1;
 
-    public QuizAnswerAdapter(List<String> answerList) {
-        this.answerList = answerList;
+    public QuizAnswerAdapter(List<QuizAnswerModel> quizAnswerModels) {
+        this.quizAnswerModels = quizAnswerModels;
     }
 
     @NonNull
@@ -30,21 +33,27 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
 
     @Override
     public void onBindViewHolder(@NonNull QuizAnswerViewHolder holder, int position) {
+        QuizAnswerModel quizAnswerModel = quizAnswerModels.get(position);
+        holder.txtAnswer.setText(quizAnswerModel.getAnswer());
+        holder.radioButton.setChecked(position == selectedPosition);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return answerList.size();
+        return quizAnswerModels.size();
     }
 
     public class QuizAnswerViewHolder extends RecyclerView.ViewHolder{
 
+        RadioButton radioButton;
         TextView txtAnswer;
 
         public QuizAnswerViewHolder(@NonNull View itemView) {
             super(itemView);
             txtAnswer = itemView.findViewById(R.id.txtAnswer);
+            radioButton = itemView.findViewById(R.id.radioBtn);
         }
     }
 }

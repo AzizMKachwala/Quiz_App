@@ -9,38 +9,16 @@
     android:padding="@dimen/_10sdp"
     tools:context=".QuizStartActivity">
 
-    <androidx.cardview.widget.CardView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/questionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/_1sdp"
-        app:cardUseCompatPadding="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/gradient_quiz"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/questionListRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RESET" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="horizontal">
 
@@ -51,7 +29,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Previous" />
+            android:text="Previous"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btnNext"
@@ -74,11 +53,12 @@
         android:text="Skip" />
 
     <Button
-        android:id="@+id/btnEnd"
+        android:id="@+id/btnFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/_10sdp"
         android:gravity="center"
-        android:text="Finish And Generate Report" />
+        android:text="Finish And Generate Report"
+        android:visibility="gone" />
 </LinearLayout>
