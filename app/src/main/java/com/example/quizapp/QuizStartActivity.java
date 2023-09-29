@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ public class QuizStartActivity extends AppCompatActivity {
     List<QuizQuestionModel> quizQuestionModels = new ArrayList<>();
     RecyclerView questionRecyclerView;
     List<String> answerList;
+    List<String> userAnswers = new ArrayList<>();
     QuizQuestionAdapter quizQuestionAdapter;
     Button btnPrevious, btnNext, btnSkip, btnFinish;
     int currentPosition = 0;
@@ -76,10 +78,8 @@ public class QuizStartActivity extends AppCompatActivity {
 
         List<QuizAnswerModel> quizAnswerModels6 = new ArrayList<>();
         quizAnswerModels6.add(new QuizAnswerModel("D"));
-        quizAnswerModels6.add(new QuizAnswerModel("E"));
         quizAnswerModels6.add(new QuizAnswerModel("F"));
         quizAnswerModels6.add(new QuizAnswerModel("W"));
-        quizAnswerModels6.add(new QuizAnswerModel("X"));
         quizAnswerModels6.add(new QuizAnswerModel("Y"));
         quizAnswerModels6.add(new QuizAnswerModel("Z"));
         quizQuestionModels.add(new QuizQuestionModel("6. Letter F", quizAnswerModels6, "F"));
@@ -121,6 +121,7 @@ public class QuizStartActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         questionRecyclerView.setAdapter(quizQuestionAdapter);
 
         btnNext = findViewById(R.id.btnNext);
@@ -170,6 +171,21 @@ public class QuizStartActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+
+
+                for (int i = 0; i < quizQuestionModels.size(); i++) {
+                    String selectedAnswer = userAnswers.get(i);
+                    String correctAnswer = quizQuestionModels.get(i).getCorrectAnswer();
+//
+//                    if (selectedAnswer == null || selectedAnswer.isEmpty()) {
+//                        skipCount++;
+//                    } else if (selectedAnswer.equals(correctAnswer)) {
+//                        correctCount++;
+//                    } else {
+//                        wrongCount++;
+//                    }
+                }
+
                 int totalQuestions = quizQuestionModels.size();
                 int scorePercentage = (correctCount * 100) / totalQuestions;
 
@@ -219,6 +235,12 @@ public class QuizStartActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+    }
+
+    public void updateUserAnswer(int questionIndex, String selectedAnswer) {
+        if (questionIndex >= 0 && questionIndex < userAnswers.size()) {
+            userAnswers.set(questionIndex, selectedAnswer);
+        }
     }
 
     private void updateButtonVisibility() {

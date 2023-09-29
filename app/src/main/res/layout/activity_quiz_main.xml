@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuizMainActivity"
-    android:background="@drawable/gradient"
+    android:background="@drawable/gradient_quiz"
     android:padding="@dimen/_10sdp">
 
     <TextView
