@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +24,7 @@ public class QuizStartActivity extends AppCompatActivity {
     List<String> answerList;
     List<String> userAnswers = new ArrayList<>();
     QuizQuestionAdapter quizQuestionAdapter;
+    TextView txtQuestionNumber,txtUserName;
     Button btnPrevious, btnNext, btnSkip, btnFinish;
     int currentPosition = 0;
     int correctCount = 0, wrongCount = 0, skipCount = 0;
@@ -35,6 +36,13 @@ public class QuizStartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_start);
 
         questionRecyclerView = findViewById(R.id.questionRecyclerView);
+        txtUserName = findViewById(R.id.txtUserName);
+        txtQuestionNumber = findViewById(R.id.txtQuestionNumber);
+
+        Intent intent = getIntent();
+        String UserName = intent.getStringExtra("userName");
+
+        txtUserName.setText(UserName);
 
         // To Stop the Scroll of RecyclerView
 //        questionRecyclerView.setOnTouchListener(new View.OnTouchListener() {
@@ -130,6 +138,7 @@ public class QuizStartActivity extends AppCompatActivity {
         btnPrevious = findViewById(R.id.btnPrevious);
 
         btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 if (currentPosition > 0) {
@@ -142,6 +151,7 @@ public class QuizStartActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 if (currentPosition < quizQuestionModels.size() - 1) {
@@ -154,6 +164,7 @@ public class QuizStartActivity extends AppCompatActivity {
         });
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 if (currentPosition < quizQuestionModels.size() - 1) {
