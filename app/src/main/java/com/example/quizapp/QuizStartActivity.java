@@ -1,5 +1,6 @@
 package com.example.quizapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -156,34 +158,89 @@ public class QuizStartActivity extends AppCompatActivity {
         });
 
         btnFinish.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-//                calculateCounts();
-                String message = "Correct: " + correctCount + ", Wrong: " + wrongCount + ", Skip: " + skipCount;
-                Toast.makeText(QuizStartActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                int totalQuestions = quizQuestionModels.size();
+                int scorePercentage = (correctCount * 100) / totalQuestions;
+//                Toast.makeText(QuizStartActivity.this, "Total Questions :" + totalQuestions + "\nPercentage :" + scorePercentage, Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(QuizStartActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
+                builder1.setView(dialogView);
+
+                TextView txtResultTotalQuestion = dialogView.findViewById(R.id.txtResultTotalQuestion);
+                txtResultTotalQuestion.setText("Total Questions = " + totalQuestions);
+
+                TextView txtResultCorrectAnswerCount = dialogView.findViewById(R.id.txtResultCorrectAnswerCount);
+                txtResultCorrectAnswerCount.setText("Correct Answers = " + correctCount);
+
+                TextView txtResultWrongAnswerCount = dialogView.findViewById(R.id.txtResultWrongAnswerCount);
+                txtResultWrongAnswerCount.setText("Wrong Question = " + wrongCount);
+
+                TextView txtResultSkipAnswerCount = dialogView.findViewById(R.id.txtResultSkipAnswerCount);
+                txtResultSkipAnswerCount.setText("Skipped Question = " + skipCount);
+
+                TextView txtResultScore = dialogView.findViewById(R.id.txtResultScore);
+                txtResultScore.setText("Your Score is " + scorePercentage + "%");
+
+                TextView txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
+
+                if(scorePercentage>=80){
+                    txtResultRemarks.setText("Excellent");
+                }else if(scorePercentage>=60){
+                    txtResultRemarks.setText("Good");
+                }else if(scorePercentage>=40){
+                    txtResultRemarks.setText("OK");
+                }else if(scorePercentage>=20){
+                    txtResultRemarks.setText("Bad");
+                }else{
+                    txtResultRemarks.setText("Very Bad");
+                }
             }
         });
     }
-
-//    private void calculateCounts() {
-//        for (QuizQuestionModel question : quizQuestionModels) {
-//            String selectedAnswer = answerList.get(quizQuestionModels.indexOf(question));
-//            String correctAnswer = question.getCorrectAnswer();
-//
-//            if (selectedAnswer == null || selectedAnswer.isEmpty()) {
-//                skipCount++;
-//            } else if (selectedAnswer.equals(correctAnswer)) {
-//                correctCount++;
-//            } else {
-//                wrongCount++;
-//            }
-//        }
-//    }
 
     private void updateButtonVisibility() {
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                        // Add an "OK" button to the dialog
+//                        builder.setPositiveButton("OK",new DialogInterface.OnClickListener(){
+//@Override
+//public void onClick(DialogInterface dialogInterface,int i){
+//        // Handle the "OK" button click if needed
+//        dialogInterface.dismiss(); // Dismiss the dialog
+//        }
+//        });
+//
+//        // Create and show the dialog
+//        AlertDialog dialog=builder.create();
+//        dialog.show();
+//        }
