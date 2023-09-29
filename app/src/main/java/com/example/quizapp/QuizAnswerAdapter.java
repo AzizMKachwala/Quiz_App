@@ -36,8 +36,8 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         QuizAnswerModel quizAnswerModel = quizAnswerModels.get(position);
         holder.txtAnswer.setText(quizAnswerModel.getAnswer());
         holder.radioButton.setChecked(position == selectedPosition);
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -53,6 +53,16 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
             super(itemView);
             txtAnswer = itemView.findViewById(R.id.txtAnswer);
             radioButton = itemView.findViewById(R.id.radioBtn);
+
+            View.OnClickListener clickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedPosition = getBindingAdapterPosition();
+                    notifyDataSetChanged();
+                }
+            };
+            itemView.setOnClickListener(clickListener);
+            radioButton.setOnClickListener(clickListener);
         }
     }
 }

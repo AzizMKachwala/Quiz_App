@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -171,7 +172,6 @@ public class QuizStartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int totalQuestions = quizQuestionModels.size();
                 int scorePercentage = (correctCount * 100) / totalQuestions;
-//                Toast.makeText(QuizStartActivity.this, "Total Questions :" + totalQuestions + "\nPercentage :" + scorePercentage, Toast.LENGTH_SHORT).show();
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(QuizStartActivity.this);
                 View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
@@ -207,8 +207,17 @@ public class QuizStartActivity extends AppCompatActivity {
                 } else {
                     txtResultRemarks.setText("Very Bad");
                 }
-            }
 
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
         });
     }
 
@@ -218,18 +227,3 @@ public class QuizStartActivity extends AppCompatActivity {
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
     }
 }
-
-
-//                        // Add an "OK" button to the dialog
-//                        builder.setPositiveButton("OK",new DialogInterface.OnClickListener(){
-//@Override
-//public void onClick(DialogInterface dialogInterface,int i){
-//        // Handle the "OK" button click if needed
-//        dialogInterface.dismiss(); // Dismiss the dialog
-//        }
-//        });
-//
-//        // Create and show the dialog
-//        AlertDialog dialog=builder.create();
-//        dialog.show();
-//        }
