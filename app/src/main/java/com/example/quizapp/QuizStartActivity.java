@@ -33,13 +33,14 @@ public class QuizStartActivity extends AppCompatActivity {
 
         questionRecyclerView = findViewById(R.id.questionRecyclerView);
 
-        questionRecyclerView.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;
-            }
-        });
+        // To Stop the Scroll of RecyclerView
+//        questionRecyclerView.setOnTouchListener(new View.OnTouchListener() {
+//            @SuppressLint("ClickableViewAccessibility")
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                return true;
+//            }
+//        });
 
         quizQuestionModels = new ArrayList<>();
         answerList = new ArrayList<>();
@@ -111,7 +112,14 @@ public class QuizStartActivity extends AppCompatActivity {
         quizQuestionModels.add(new QuizQuestionModel("10. Letter J", quizAnswerModels10, "J"));
 
         quizQuestionAdapter = new QuizQuestionAdapter(quizQuestionModels);
-        questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false));
+
+        //  To Stop the Scroll of RecyclerView while initialization of it
+        questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        });
         questionRecyclerView.setAdapter(quizQuestionAdapter);
 
         btnNext = findViewById(R.id.btnNext);
@@ -165,39 +173,42 @@ public class QuizStartActivity extends AppCompatActivity {
                 int scorePercentage = (correctCount * 100) / totalQuestions;
 //                Toast.makeText(QuizStartActivity.this, "Total Questions :" + totalQuestions + "\nPercentage :" + scorePercentage, Toast.LENGTH_SHORT).show();
 
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(QuizStartActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(QuizStartActivity.this);
                 View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
-                builder1.setView(dialogView);
+                builder.setView(dialogView);
 
-                TextView txtResultTotalQuestion = dialogView.findViewById(R.id.txtResultTotalQuestion);
+                TextView txtResultTotalQuestion, txtResultCorrectAnswerCount, txtResultWrongAnswerCount, txtResultSkipAnswerCount, txtResultScore, txtResultRemarks;
+
+                txtResultTotalQuestion = dialogView.findViewById(R.id.txtResultTotalQuestion);
                 txtResultTotalQuestion.setText("Total Questions = " + totalQuestions);
 
-                TextView txtResultCorrectAnswerCount = dialogView.findViewById(R.id.txtResultCorrectAnswerCount);
+                txtResultCorrectAnswerCount = dialogView.findViewById(R.id.txtResultCorrectAnswerCount);
                 txtResultCorrectAnswerCount.setText("Correct Answers = " + correctCount);
 
-                TextView txtResultWrongAnswerCount = dialogView.findViewById(R.id.txtResultWrongAnswerCount);
+                txtResultWrongAnswerCount = dialogView.findViewById(R.id.txtResultWrongAnswerCount);
                 txtResultWrongAnswerCount.setText("Wrong Question = " + wrongCount);
 
-                TextView txtResultSkipAnswerCount = dialogView.findViewById(R.id.txtResultSkipAnswerCount);
+                txtResultSkipAnswerCount = dialogView.findViewById(R.id.txtResultSkipAnswerCount);
                 txtResultSkipAnswerCount.setText("Skipped Question = " + skipCount);
 
-                TextView txtResultScore = dialogView.findViewById(R.id.txtResultScore);
+                txtResultScore = dialogView.findViewById(R.id.txtResultScore);
                 txtResultScore.setText("Your Score is " + scorePercentage + "%");
 
-                TextView txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
+                txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
 
-                if(scorePercentage>=80){
+                if (scorePercentage >= 80) {
                     txtResultRemarks.setText("Excellent");
-                }else if(scorePercentage>=60){
+                } else if (scorePercentage >= 60) {
                     txtResultRemarks.setText("Good");
-                }else if(scorePercentage>=40){
+                } else if (scorePercentage >= 40) {
                     txtResultRemarks.setText("OK");
-                }else if(scorePercentage>=20){
+                } else if (scorePercentage >= 20) {
                     txtResultRemarks.setText("Bad");
-                }else{
+                } else {
                     txtResultRemarks.setText("Very Bad");
                 }
             }
+
         });
     }
 
@@ -207,28 +218,6 @@ public class QuizStartActivity extends AppCompatActivity {
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //                        // Add an "OK" button to the dialog
