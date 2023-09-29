@@ -154,6 +154,7 @@ public class QuizStartActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
+
                 if (currentPosition < quizQuestionModels.size() - 1) {
                     currentPosition++;
                     questionRecyclerView.scrollToPosition(currentPosition);
