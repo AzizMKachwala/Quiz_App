@@ -148,7 +148,7 @@ public class QuizStartActivity extends AppCompatActivity {
             txtResultCorrectAnswerCount.setText("Correct Answers = " + correctCount);
             txtResultWrongAnswerCount.setText("Wrong Question = " + wrongCount);
             txtResultSkipAnswerCount.setText("Skipped Question = " + skipCount);
-            txtResultScore.setText("Your Score is " + scorePercentage + " %");
+            txtResultScore.setText("Your Score is " + scorePercentage + "%");
 
             txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
 
@@ -183,9 +183,6 @@ public class QuizStartActivity extends AppCompatActivity {
     }
 
     private void updateButtonVisibility() {
-
-        boolean isLastQuestion = currentPosition == quizQuestionModels.size() - 1;
-
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);

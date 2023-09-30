@@ -45,7 +45,6 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
             selectedPosition = position;
             notifyDataSetChanged();
 
-            // Call onAnswerSelected to track the selected answer
             if (context instanceof QuizStartActivity)
                 ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
         });
@@ -54,12 +53,10 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
             selectedPosition = position;
             notifyDataSetChanged();
 
-            // Call onAnswerSelected to track the selected answer
             if (context instanceof QuizStartActivity)
                 ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
         });
     }
-
 
     @Override
     public int getItemCount() {

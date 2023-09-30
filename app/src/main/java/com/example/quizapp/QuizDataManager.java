@@ -29,7 +29,7 @@ public class QuizDataManager {
         quizAnswerModels4.add(new QuizAnswerModel("D"));
         quizAnswerModels4.add(new QuizAnswerModel("E"));
         quizQuestionModels.add(new QuizQuestionModel("4. Letter D", quizAnswerModels4, "D"));
-//
+
 //        List<QuizAnswerModel> quizAnswerModels5 = new ArrayList<>();
 //        quizAnswerModels5.add(new QuizAnswerModel("D"));
 //        quizAnswerModels5.add(new QuizAnswerModel("E"));
