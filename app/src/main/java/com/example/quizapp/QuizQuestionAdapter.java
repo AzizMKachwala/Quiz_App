@@ -47,7 +47,7 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
         return quizQuestionModels.size();
     }
 
-    public class QuizQuestionViewHolder extends RecyclerView.ViewHolder {
+    public static class QuizQuestionViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtQuestion;
         RecyclerView answerRecyclerView;
