@@ -1,12 +1,12 @@
 package com.example.quizapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +17,13 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
 
     Context context;
     List<QuizAnswerModel> quizAnswerModels;
+    int questionIndex;
     int selectedPosition = -1;
 
-    public QuizAnswerAdapter(List<QuizAnswerModel> quizAnswerModels) {
+    public QuizAnswerAdapter(Context context, List<QuizAnswerModel> quizAnswerModels, int questionIndex) {
+        this.context = context;
         this.quizAnswerModels = quizAnswerModels;
+        this.questionIndex = questionIndex;
     }
 
     @NonNull
@@ -31,11 +34,30 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         return new QuizAnswerViewHolder(view);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
-    public void onBindViewHolder(@NonNull QuizAnswerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuizAnswerViewHolder holder, @SuppressLint("RecyclerView") int position) {
         QuizAnswerModel quizAnswerModel = quizAnswerModels.get(position);
         holder.txtAnswer.setText(quizAnswerModel.getAnswer());
         holder.radioButton.setChecked(position == selectedPosition);
+
+        holder.itemView.setOnClickListener(v -> {
+            selectedPosition = position;
+            notifyDataSetChanged();
+
+            // Call onAnswerSelected to track the selected answer
+            if (context instanceof QuizStartActivity)
+                ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
+        });
+
+        holder.radioButton.setOnClickListener(v -> {
+            selectedPosition = position;
+            notifyDataSetChanged();
+
+            // Call onAnswerSelected to track the selected answer
+            if (context instanceof QuizStartActivity)
+                ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
+        });
     }
 
 
@@ -54,12 +76,9 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
             txtAnswer = itemView.findViewById(R.id.txtAnswer);
             radioButton = itemView.findViewById(R.id.radioBtn);
 
-            View.OnClickListener clickListener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    selectedPosition = getBindingAdapterPosition();
-                    notifyDataSetChanged();
-                }
+            @SuppressLint("NotifyDataSetChanged") View.OnClickListener clickListener = v -> {
+                selectedPosition = getBindingAdapterPosition();
+                notifyDataSetChanged();
             };
             itemView.setOnClickListener(clickListener);
             radioButton.setOnClickListener(clickListener);

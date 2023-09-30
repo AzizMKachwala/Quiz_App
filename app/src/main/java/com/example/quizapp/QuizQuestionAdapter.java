@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +18,8 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
     Context context;
     List<QuizQuestionModel> quizQuestionModels;
 
-    public QuizQuestionAdapter(List<QuizQuestionModel> quizQuestionModels) {
+    public QuizQuestionAdapter(Context context, List<QuizQuestionModel> quizQuestionModels) {
+        this.context = context;
         this.quizQuestionModels = quizQuestionModels;
     }
 
@@ -37,7 +36,7 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
         holder.txtQuestion.setText(quizQuestionModel.getQuestion());
 
-        QuizAnswerAdapter quizAnswerAdapter = new QuizAnswerAdapter(quizQuestionModel.getQuizAnswerModels());
+        QuizAnswerAdapter quizAnswerAdapter = new QuizAnswerAdapter(context, quizQuestionModel.getQuizAnswerModels(), position);
         holder.answerRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         holder.answerRecyclerView.setAdapter(quizAnswerAdapter);
     }

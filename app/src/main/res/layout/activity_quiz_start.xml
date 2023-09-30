@@ -92,4 +92,15 @@
         android:text="Finish And Generate Report"
         android:textStyle="bold"
         android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="Back"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 </LinearLayout>

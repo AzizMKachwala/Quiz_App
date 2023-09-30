@@ -17,14 +17,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizStartActivity extends AppCompatActivity {
+
     List<QuizQuestionModel> quizQuestionModels = new ArrayList<>();
     RecyclerView questionRecyclerView;
     List<String> answerList = new ArrayList<>();
     QuizQuestionAdapter quizQuestionAdapter;
     TextView txtQuestionNumber, txtUserName;
-    Button btnPrevious, btnNext, btnSkip, btnFinish;
-    int currentPosition = 0;
-    int correctCount = 0, wrongCount = 0, skipCount = 0;
+    Button btnPrevious, btnNext, btnSkip, btnFinish, btnBack;
+    int currentPosition = 0,correctCount = 0, wrongCount = 0, skipCount = 0;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
     @Override
@@ -51,7 +51,7 @@ public class QuizStartActivity extends AppCompatActivity {
 //        });
 
         quizQuestionModels = QuizDataManager.getQuizQuestions();
-        quizQuestionAdapter = new QuizQuestionAdapter(quizQuestionModels);
+        quizQuestionAdapter = new QuizQuestionAdapter(this, quizQuestionModels);
 
         //  To Stop the Scroll of RecyclerView while initialization of it
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false) {
@@ -67,6 +67,7 @@ public class QuizStartActivity extends AppCompatActivity {
         btnSkip = findViewById(R.id.btnSkip);
         btnFinish = findViewById(R.id.btnFinish);
         btnPrevious = findViewById(R.id.btnPrevious);
+        btnBack = findViewById(R.id.btnBack);
 
         btnPrevious.setOnClickListener(view -> {
             if (currentPosition > 0) {
@@ -98,47 +99,56 @@ public class QuizStartActivity extends AppCompatActivity {
             updateButtonVisibility();
         });
 
+        btnBack.setOnClickListener(view -> {
+            Intent intent1 = new Intent(this, QuizMainActivity.class);
+            startActivity(intent1);
+        });
+
         btnFinish.setOnClickListener(view -> {
 
             Toast.makeText(this, "MESSAGE", Toast.LENGTH_SHORT).show();
 
-//            for (int i = 0; i <= quizQuestionModels.size(); i++) {
-//                String selectedAnswer = answerList.get(i);
-//                String correctAnswer = quizQuestionModels.get(i).getCorrectAnswer();
-//
-//                    if (selectedAnswer == null || selectedAnswer.isEmpty()) {
-//                        skipCount++;
-//                    } else if (selectedAnswer.equals(correctAnswer)) {
-//                        correctCount++;
-//                    } else {
-//                        wrongCount++;
-//                    }
-//            }
+            correctCount = 0;
+            wrongCount = 0;
+            skipCount = 0;
 
-            int totalQuestions = quizQuestionModels.size();
-            int scorePercentage = (correctCount * 100) / totalQuestions;
+            for (int i = 0; i < quizQuestionModels.size(); i++) {
+                if (answerList.size() > i) {
+                    String selectedAnswer = answerList.get(i);
+                    String correctAnswer = quizQuestionModels.get(i).getCorrectAnswer();
+
+                    if (selectedAnswer == null || selectedAnswer.isEmpty()) {
+                        skipCount++;
+                    } else if (selectedAnswer.equals(correctAnswer)) {
+                        correctCount++;
+                    } else {
+                        wrongCount++;
+                    }
+                }
+            }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(QuizStartActivity.this);
             View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
             builder.setView(dialogView);
 
-            TextView txtResultTotalQuestion, txtResultCorrectAnswerCount, txtResultWrongAnswerCount, txtResultSkipAnswerCount, txtResultScore, txtResultRemarks;
+            TextView txtDialogUserName, txtResultTotalQuestion, txtResultCorrectAnswerCount, txtResultWrongAnswerCount, txtResultSkipAnswerCount, txtResultScore, txtResultRemarks;
             Button btnOK;
+            int totalQuestions = quizQuestionModels.size();
+            double scorePercentage = (correctCount * 100) / totalQuestions;
 
             txtResultTotalQuestion = dialogView.findViewById(R.id.txtResultTotalQuestion);
-            txtResultTotalQuestion.setText("Total Questions = " + totalQuestions);
-
             txtResultCorrectAnswerCount = dialogView.findViewById(R.id.txtResultCorrectAnswerCount);
-            txtResultCorrectAnswerCount.setText("Correct Answers = " + correctCount);
-
             txtResultWrongAnswerCount = dialogView.findViewById(R.id.txtResultWrongAnswerCount);
-            txtResultWrongAnswerCount.setText("Wrong Question = " + wrongCount);
-
             txtResultSkipAnswerCount = dialogView.findViewById(R.id.txtResultSkipAnswerCount);
-            txtResultSkipAnswerCount.setText("Skipped Question = " + skipCount);
-
             txtResultScore = dialogView.findViewById(R.id.txtResultScore);
-            txtResultScore.setText("Your Score is " + scorePercentage + "%");
+            txtDialogUserName = dialogView.findViewById(R.id.txtDialogUserName);
+
+            txtDialogUserName.setText("Your Result : " + UserName);
+            txtResultTotalQuestion.setText("Total Questions = " + totalQuestions);
+            txtResultCorrectAnswerCount.setText("Correct Answers = " + correctCount);
+            txtResultWrongAnswerCount.setText("Wrong Question = " + wrongCount);
+            txtResultSkipAnswerCount.setText("Skipped Question = " + skipCount);
+            txtResultScore.setText("Your Score is " + scorePercentage + " %");
 
             txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
 
@@ -156,32 +166,26 @@ public class QuizStartActivity extends AppCompatActivity {
 
             btnOK = dialogView.findViewById(R.id.btnOK);
 
-            builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss());
+//            builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss());
 
             AlertDialog dialog = builder.create();
             dialog.show();
+
+            btnOK.setOnClickListener(v -> dialog.dismiss());
         });
     }
 
-    private void onAnswerSelected(int questionIndex, String selectedAnswer) {
-        // Ensure that the userAnswers list has enough capacity
+    public void onAnswerSelected(int questionIndex, String selectedAnswer) {
         while (answerList.size() <= questionIndex) {
-            answerList.add(null); // or some default value indicating no answer
+            answerList.add(null);
         }
-
-        // Update the selected answer for the question
         answerList.set(questionIndex, selectedAnswer);
-    }
-
-    public void updateUserAnswer(int questionIndex, String selectedAnswer) {
-        if (questionIndex >= 0 && questionIndex < answerList.size()) {
-            answerList.set(questionIndex, selectedAnswer);
-        }
     }
 
     private void updateButtonVisibility() {
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
+        btnBack.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
     }
 }

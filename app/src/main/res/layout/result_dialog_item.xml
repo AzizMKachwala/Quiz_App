@@ -7,48 +7,48 @@
     android:padding="@dimen/_10sdp">
 
     <TextView
-        android:id="@+id/txtResultTotalQuestion"
+        android:id="@+id/txtDialogUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TOTAL QUESTIONS : " />
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+    <TextView
+        android:id="@+id/txtResultTotalQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/txtResultCorrectAnswerCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Correct Answer Count : " />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txtResultWrongAnswerCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wrong Answer Count : " />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txtResultSkipAnswerCount"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skip Answer Count : " />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txtResultScore"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your Score is " />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txtResultRemarks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remarks : " />
+        android:layout_marginBottom="@dimen/_10sdp" />
 
     <Button
         android:id="@+id/btnOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtResultRemarks"
-        android:layout_centerInParent="true"
-        android:text="OK" />
+        android:text="OK"/>
 
 </LinearLayout>
 
