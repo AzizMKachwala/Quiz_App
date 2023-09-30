@@ -183,6 +183,9 @@ public class QuizStartActivity extends AppCompatActivity {
     }
 
     private void updateButtonVisibility() {
+
+        boolean isLastQuestion = currentPosition == quizQuestionModels.size() - 1;
+
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
