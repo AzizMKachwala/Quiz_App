@@ -19,8 +19,8 @@ import java.util.List;
 public class QuizStartActivity extends AppCompatActivity {
 
     List<QuizQuestionModel> quizQuestionModels = new ArrayList<>();
-    RecyclerView questionRecyclerView;
     List<String> answerList = new ArrayList<>();
+    RecyclerView questionRecyclerView;
     QuizQuestionAdapter quizQuestionAdapter;
     TextView txtQuestionNumber, txtUserName;
     Button btnPrevious, btnNext, btnSkip, btnFinish, btnBack;
