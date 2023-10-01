@@ -12,6 +12,7 @@ public class QuizDataManager {
         quizAnswerModels1.add(new QuizAnswerModel("Delhi"));
         quizAnswerModels1.add(new QuizAnswerModel("Ghandhinagar"));
         quizAnswerModels1.add(new QuizAnswerModel("Ahmedabad"));
+        quizAnswerModels1.add(new QuizAnswerModel("Mumbai"));
         quizQuestionModels.add(new QuizQuestionModel("1. What is the Capital of India ?", quizAnswerModels1, "Delhi"));
 
         List<QuizAnswerModel> quizAnswerModels2 = new ArrayList<>();
@@ -21,9 +22,10 @@ public class QuizDataManager {
         quizQuestionModels.add(new QuizQuestionModel("2. Gujarat State is Located in which Country :", quizAnswerModels2, "India"));
 
         List<QuizAnswerModel> quizAnswerModels3 = new ArrayList<>();
+        quizAnswerModels3.add(new QuizAnswerModel("6"));
         quizAnswerModels3.add(new QuizAnswerModel("7"));
-        quizAnswerModels3.add(new QuizAnswerModel("5"));
         quizAnswerModels3.add(new QuizAnswerModel("8"));
+        quizAnswerModels3.add(new QuizAnswerModel("9"));
         quizQuestionModels.add(new QuizQuestionModel("3. How many Wonders of the World are there?", quizAnswerModels3, "7"));
 
         List<QuizAnswerModel> quizAnswerModels4 = new ArrayList<>();

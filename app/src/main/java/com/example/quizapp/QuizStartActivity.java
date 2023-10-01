@@ -99,11 +99,6 @@ public class QuizStartActivity extends AppCompatActivity {
             updateButtonVisibility();
         });
 
-        btnBack.setOnClickListener(view -> {
-            Intent intent1 = new Intent(this, QuizMainActivity.class);
-            startActivity(intent1);
-        });
-
         btnFinish.setOnClickListener(view -> {
 
 //            Toast.makeText(this, "MESSAGE", Toast.LENGTH_SHORT).show();
@@ -171,6 +166,11 @@ public class QuizStartActivity extends AppCompatActivity {
 
             btnOK = dialogView.findViewById(R.id.btnOK);
             btnOK.setOnClickListener(v -> dialog.dismiss());
+        });
+
+        btnBack.setOnClickListener(view -> {
+            Intent intent1 = new Intent(this, QuizMainActivity.class);
+            startActivity(intent1);
         });
     }
 

@@ -20,6 +20,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
     int questionIndex;
     int selectedPosition = -1;
 
+
     public QuizAnswerAdapter(Context context, List<QuizAnswerModel> quizAnswerModels, int questionIndex) {
         this.context = context;
         this.quizAnswerModels = quizAnswerModels;
@@ -30,7 +31,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
     @Override
     public QuizAnswerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.answer_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.answer_item, parent, false);
         return new QuizAnswerViewHolder(view);
     }
 
@@ -65,7 +66,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         return quizAnswerModels.size();
     }
 
-    public class QuizAnswerViewHolder extends RecyclerView.ViewHolder{
+    public class QuizAnswerViewHolder extends RecyclerView.ViewHolder {
 
         RadioButton radioButton;
         TextView txtAnswer;
