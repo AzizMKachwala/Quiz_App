@@ -164,13 +164,12 @@ public class QuizStartActivity extends AppCompatActivity {
                 txtResultRemarks.setText("Very Bad");
             }
 
-            btnOK = dialogView.findViewById(R.id.btnOK);
-
 //            builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss());
 
             AlertDialog dialog = builder.create();
             dialog.show();
 
+            btnOK = dialogView.findViewById(R.id.btnOK);
             btnOK.setOnClickListener(v -> dialog.dismiss());
         });
     }

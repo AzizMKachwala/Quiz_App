@@ -11,6 +11,7 @@ public class QuizDataManager {
         List<QuizAnswerModel> quizAnswerModels1 = new ArrayList<>();
         quizAnswerModels1.add(new QuizAnswerModel("Delhi"));
         quizAnswerModels1.add(new QuizAnswerModel("Ghandhinagar"));
+        quizAnswerModels1.add(new QuizAnswerModel("Ahmedabad"));
         quizQuestionModels.add(new QuizQuestionModel("1. What is the Capital of India ?", quizAnswerModels1, "Delhi"));
 
         List<QuizAnswerModel> quizAnswerModels2 = new ArrayList<>();
@@ -23,12 +24,13 @@ public class QuizDataManager {
         quizAnswerModels3.add(new QuizAnswerModel("7"));
         quizAnswerModels3.add(new QuizAnswerModel("5"));
         quizAnswerModels3.add(new QuizAnswerModel("8"));
-        quizQuestionModels.add(new QuizQuestionModel("3. How many Wonders of World are there?", quizAnswerModels3, "7"));
+        quizQuestionModels.add(new QuizQuestionModel("3. How many Wonders of the World are there?", quizAnswerModels3, "7"));
 
         List<QuizAnswerModel> quizAnswerModels4 = new ArrayList<>();
-        quizAnswerModels4.add(new QuizAnswerModel("D"));
-        quizAnswerModels4.add(new QuizAnswerModel("E"));
-        quizQuestionModels.add(new QuizQuestionModel("4. Letter D", quizAnswerModels4, "D"));
+        quizAnswerModels4.add(new QuizAnswerModel("An Operating System"));
+        quizAnswerModels4.add(new QuizAnswerModel("A Web Server"));
+        quizAnswerModels4.add(new QuizAnswerModel("A Web Browser"));
+        quizQuestionModels.add(new QuizQuestionModel("4. Andrdoid is ", quizAnswerModels4, "An Operating System"));
 
         List<QuizAnswerModel> quizAnswerModels5 = new ArrayList<>();
         quizAnswerModels5.add(new QuizAnswerModel("D"));
