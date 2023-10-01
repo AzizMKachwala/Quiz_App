@@ -106,7 +106,7 @@ public class QuizStartActivity extends AppCompatActivity {
 
         btnFinish.setOnClickListener(view -> {
 
-            Toast.makeText(this, "MESSAGE", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "MESSAGE", Toast.LENGTH_SHORT).show();
 
             correctCount = 0;
             wrongCount = 0;
@@ -183,6 +183,10 @@ public class QuizStartActivity extends AppCompatActivity {
     }
 
     private void updateButtonVisibility() {
+        int totalQuestions = quizQuestionModels.size();
+        String questionNumberText = String.format("(%d/%d)", currentPosition + 1, totalQuestions);
+        txtQuestionNumber.setText(questionNumberText);
+
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);

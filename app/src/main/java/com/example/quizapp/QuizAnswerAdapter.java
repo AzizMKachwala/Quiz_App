@@ -47,6 +47,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
 
             if (context instanceof QuizStartActivity)
                 ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
+
         });
 
         holder.radioButton.setOnClickListener(v -> {
@@ -55,6 +56,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
 
             if (context instanceof QuizStartActivity)
                 ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());
+
         });
     }
 
@@ -81,4 +83,5 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
             radioButton.setOnClickListener(clickListener);
         }
     }
+
 }
