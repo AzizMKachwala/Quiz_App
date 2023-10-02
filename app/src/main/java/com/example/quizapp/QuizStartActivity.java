@@ -97,6 +97,7 @@ public class QuizStartActivity extends AppCompatActivity {
                 Toast.makeText(QuizStartActivity.this, "Last Question Reached", Toast.LENGTH_SHORT).show();
             }
             updateButtonVisibility();
+
         });
 
         btnFinish.setOnClickListener(view -> {
@@ -179,6 +180,8 @@ public class QuizStartActivity extends AppCompatActivity {
             answerList.add(null);
         }
         answerList.set(questionIndex, selectedAnswer);
+        btnSkip.setEnabled(false);
+        btnNext.setEnabled(true);
     }
 
     private void updateButtonVisibility() {
@@ -186,6 +189,8 @@ public class QuizStartActivity extends AppCompatActivity {
         String questionNumberText = String.format("(%d/%d)", currentPosition + 1, totalQuestions);
         txtQuestionNumber.setText(questionNumberText);
 
+        btnNext.setEnabled(false);
+        btnSkip.setEnabled(true);
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
         btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);

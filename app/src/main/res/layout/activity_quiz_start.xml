@@ -67,7 +67,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Next"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:enabled="false"/>
 
     </LinearLayout>
 
