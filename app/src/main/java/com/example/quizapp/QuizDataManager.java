@@ -32,7 +32,7 @@ public class QuizDataManager {
         quizAnswerModels4.add(new QuizAnswerModel("An Operating System"));
         quizAnswerModels4.add(new QuizAnswerModel("A Web Server"));
         quizAnswerModels4.add(new QuizAnswerModel("A Web Browser"));
-        quizQuestionModels.add(new QuizQuestionModel("4. Andrdoid is ", quizAnswerModels4, "An Operating System"));
+        quizQuestionModels.add(new QuizQuestionModel("4. Android is ", quizAnswerModels4, "An Operating System"));
 
         List<QuizAnswerModel> quizAnswerModels5 = new ArrayList<>();
         quizAnswerModels5.add(new QuizAnswerModel("D"));
