@@ -22,6 +22,7 @@ public class QuizDataManager {
         quizQuestionModels.add(new QuizQuestionModel("2. Gujarat State is Located in which Country :", quizAnswerModels2, "India"));
 
         List<QuizAnswerModel> quizAnswerModels3 = new ArrayList<>();
+        quizAnswerModels3.add(new QuizAnswerModel("5"));
         quizAnswerModels3.add(new QuizAnswerModel("6"));
         quizAnswerModels3.add(new QuizAnswerModel("7"));
         quizAnswerModels3.add(new QuizAnswerModel("8"));
@@ -32,49 +33,51 @@ public class QuizDataManager {
         quizAnswerModels4.add(new QuizAnswerModel("An Operating System"));
         quizAnswerModels4.add(new QuizAnswerModel("A Web Server"));
         quizAnswerModels4.add(new QuizAnswerModel("A Web Browser"));
+        quizAnswerModels4.add(new QuizAnswerModel("A Virtual Machine"));
+        quizAnswerModels4.add(new QuizAnswerModel("None of the Above"));
         quizQuestionModels.add(new QuizQuestionModel("4. Android is ", quizAnswerModels4, "An Operating System"));
 
         List<QuizAnswerModel> quizAnswerModels5 = new ArrayList<>();
-        quizAnswerModels5.add(new QuizAnswerModel("D"));
-        quizAnswerModels5.add(new QuizAnswerModel("E"));
-        quizAnswerModels5.add(new QuizAnswerModel("F"));
-        quizQuestionModels.add(new QuizQuestionModel("5. Letter E", quizAnswerModels5, "E"));
+        quizAnswerModels5.add(new QuizAnswerModel("Software Development Kit"));
+        quizAnswerModels5.add(new QuizAnswerModel("Software Design Kit"));
+        quizAnswerModels5.add(new QuizAnswerModel("Signature Development Kit"));
+        quizAnswerModels5.add(new QuizAnswerModel("Signature Design Kit"));
+        quizQuestionModels.add(new QuizQuestionModel("5. SDK stands for ", quizAnswerModels5, "Software Development Kit"));
 
         List<QuizAnswerModel> quizAnswerModels6 = new ArrayList<>();
-        quizAnswerModels6.add(new QuizAnswerModel("D"));
-        quizAnswerModels6.add(new QuizAnswerModel("F"));
-        quizAnswerModels6.add(new QuizAnswerModel("W"));
-        quizAnswerModels6.add(new QuizAnswerModel("Y"));
-        quizAnswerModels6.add(new QuizAnswerModel("Z"));
-        quizQuestionModels.add(new QuizQuestionModel("6. Letter F", quizAnswerModels6, "F"));
+        quizAnswerModels6.add(new QuizAnswerModel("Dynamic Volt Meter"));
+        quizAnswerModels6.add(new QuizAnswerModel("Digital Volt Meter"));
+        quizAnswerModels6.add(new QuizAnswerModel("Dalvik Volt Meter"));
+        quizAnswerModels6.add(new QuizAnswerModel("Dalvik Virtual Machine"));
+        quizAnswerModels6.add(new QuizAnswerModel("Digital Virtual Machine"));
+        quizQuestionModels.add(new QuizQuestionModel("6. DVM stands for ", quizAnswerModels6, "Dalvik Virtual Machine"));
 
         List<QuizAnswerModel> quizAnswerModels7 = new ArrayList<>();
-        quizAnswerModels7.add(new QuizAnswerModel("E"));
-        quizAnswerModels7.add(new QuizAnswerModel("F"));
-        quizAnswerModels7.add(new QuizAnswerModel("G"));
-        quizQuestionModels.add(new QuizQuestionModel("7. Letter G", quizAnswerModels7, "G"));
+        quizAnswerModels7.add(new QuizAnswerModel("Android Phone Kit"));
+        quizAnswerModels7.add(new QuizAnswerModel("Android Page Kit"));
+        quizAnswerModels7.add(new QuizAnswerModel("Android Package Kit"));
+        quizQuestionModels.add(new QuizQuestionModel("7. APK stands for  ", quizAnswerModels7, "Android Package Kit"));
 
         List<QuizAnswerModel> quizAnswerModels8 = new ArrayList<>();
-        quizAnswerModels8.add(new QuizAnswerModel("E"));
-        quizAnswerModels8.add(new QuizAnswerModel("F"));
-        quizAnswerModels8.add(new QuizAnswerModel("G"));
-        quizAnswerModels8.add(new QuizAnswerModel("H"));
-        quizQuestionModels.add(new QuizQuestionModel("8. Letter H", quizAnswerModels8, "H"));
+        quizAnswerModels8.add(new QuizAnswerModel("Application Page Information"));
+        quizAnswerModels8.add(new QuizAnswerModel("Application Programming Interface"));
+        quizAnswerModels8.add(new QuizAnswerModel("Android Programming Interface"));
+        quizAnswerModels8.add(new QuizAnswerModel("Android Page Information"));
+        quizQuestionModels.add(new QuizQuestionModel("8. API stands for ", quizAnswerModels8, "Application Programming Interface"));
 
         List<QuizAnswerModel> quizAnswerModels9 = new ArrayList<>();
-        quizAnswerModels9.add(new QuizAnswerModel("E"));
-        quizAnswerModels9.add(new QuizAnswerModel("F"));
-        quizAnswerModels9.add(new QuizAnswerModel("G"));
-        quizAnswerModels9.add(new QuizAnswerModel("H"));
-        quizAnswerModels9.add(new QuizAnswerModel("I"));
-        quizQuestionModels.add(new QuizQuestionModel("9. Letter I", quizAnswerModels9, "I"));
+        quizAnswerModels9.add(new QuizAnswerModel("Android Debug Bridge"));
+        quizAnswerModels9.add(new QuizAnswerModel("Android Delete Bridge"));
+        quizAnswerModels9.add(new QuizAnswerModel("Android Destroy Bridge"));
+        quizAnswerModels9.add(new QuizAnswerModel("None of the Above"));
+        quizQuestionModels.add(new QuizQuestionModel("9. ADB stands for ", quizAnswerModels9, "Android Debug Bridge"));
 
         List<QuizAnswerModel> quizAnswerModels10 = new ArrayList<>();
-        quizAnswerModels10.add(new QuizAnswerModel("G"));
-        quizAnswerModels10.add(new QuizAnswerModel("H"));
-        quizAnswerModels10.add(new QuizAnswerModel("I"));
-        quizAnswerModels10.add(new QuizAnswerModel("J"));
-        quizQuestionModels.add(new QuizQuestionModel("10. Letter J", quizAnswerModels10, "J"));
+        quizAnswerModels10.add(new QuizAnswerModel("Open Health Academy"));
+        quizAnswerModels10.add(new QuizAnswerModel("Open Handset Alliance"));
+        quizAnswerModels10.add(new QuizAnswerModel("Open Handset Application"));
+        quizAnswerModels10.add(new QuizAnswerModel("Open Handset Association"));
+        quizQuestionModels.add(new QuizQuestionModel("10. OHA stands for ", quizAnswerModels10, "Open Handset Alliance"));
 
         return quizQuestionModels;
     }

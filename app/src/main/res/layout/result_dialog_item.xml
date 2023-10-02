@@ -36,7 +36,8 @@
     <TextView
         android:id="@+id/txtResultScore"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"/>
 
     <TextView
         android:id="@+id/txtResultRemarks"
