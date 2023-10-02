@@ -51,12 +51,11 @@ public class QuizStartActivity extends AppCompatActivity {
 //            }
 //        });
 
-        quizQuestionModels = QuizDataManager.getQuizQuestions();
+        quizQuestionModels = QuizDataManager.getQuestionList();
         quizQuestionAdapter = new QuizQuestionAdapter(this, quizQuestionModels);
 
 //          To Stop the Scroll of RecyclerView while initialization of it
-        questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this,
-                RecyclerView.HORIZONTAL, false) {
+        questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false) {
             @Override
             public boolean canScrollHorizontally() {
                 return false;

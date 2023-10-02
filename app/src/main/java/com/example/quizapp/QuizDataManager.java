@@ -5,7 +5,7 @@ import java.util.List;
 
 public class QuizDataManager {
 
-    public static List<QuizQuestionModel> getQuizQuestions() {
+    public static List<QuizQuestionModel> getQuestionList() {
         List<QuizQuestionModel> quizQuestionModels = new ArrayList<>();
 
         List<QuizAnswerModel> quizAnswerModels1 = new ArrayList<>();
