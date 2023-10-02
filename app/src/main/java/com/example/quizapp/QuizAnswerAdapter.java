@@ -63,6 +63,11 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         return quizAnswerModels.size();
     }
 
+    public void clearSelection() {
+        selectedPosition = -1;
+        notifyDataSetChanged();
+    }
+
     public class QuizAnswerViewHolder extends RecyclerView.ViewHolder {
 
         RadioButton radioButton;

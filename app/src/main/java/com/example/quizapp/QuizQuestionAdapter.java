@@ -18,6 +18,7 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
 
     Context context;
     List<QuizQuestionModel> quizQuestionModels;
+    QuizAnswerAdapter quizAnswerAdapter;
 
     public QuizQuestionAdapter(Context context, List<QuizQuestionModel> quizQuestionModels) {
         this.context = context;
@@ -37,9 +38,16 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
         QuizQuestionModel quizQuestionModel = quizQuestionModels.get(position);
         holder.txtQuestion.setText(quizQuestionModel.getQuestion());
 
-        QuizAnswerAdapter quizAnswerAdapter = new QuizAnswerAdapter(context, quizQuestionModel.getQuizAnswerModels(), position);
+        quizAnswerAdapter = new QuizAnswerAdapter(context, quizQuestionModel.getQuizAnswerModels(), position);
         holder.answerRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         holder.answerRecyclerView.setAdapter(quizAnswerAdapter);
+
+        holder.btnReset.setOnClickListener(v -> {
+            QuizAnswerAdapter quizAnswerAdapter = (QuizAnswerAdapter) holder.answerRecyclerView.getAdapter();
+            if (quizAnswerAdapter != null) {
+                quizAnswerAdapter.clearSelection();
+            }
+        });
     }
 
     @Override
@@ -51,11 +59,13 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
 
         TextView txtQuestion;
         RecyclerView answerRecyclerView;
+        Button btnReset;
 
         public QuizQuestionViewHolder(@NonNull View itemView) {
             super(itemView);
             txtQuestion = itemView.findViewById(R.id.txtQuestion);
             answerRecyclerView = itemView.findViewById(R.id.answerRecyclerView);
+            btnReset = itemView.findViewById(R.id.btnReset);
         }
     }
 }
