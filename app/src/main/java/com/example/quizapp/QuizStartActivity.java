@@ -38,7 +38,6 @@ public class QuizStartActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String UserName = intent.getStringExtra("userName");
-
         txtUserName.setText(UserName);
 
 //         To Stop the Scroll of RecyclerView
@@ -95,7 +94,6 @@ public class QuizStartActivity extends AppCompatActivity {
                 Toast.makeText(QuizStartActivity.this, "Last Question Reached", Toast.LENGTH_SHORT).show();
             }
             updateButtonVisibility();
-
         });
 
         btnFinish.setOnClickListener(view -> {
@@ -168,7 +166,7 @@ public class QuizStartActivity extends AppCompatActivity {
         });
 
         btnBack.setOnClickListener(view -> {
-            Intent intent1 = new Intent(this, QuizMainActivity.class);
+            Intent intent1 = new Intent(QuizStartActivity.this, QuizMainActivity.class);
             startActivity(intent1);
         });
     }
@@ -178,6 +176,11 @@ public class QuizStartActivity extends AppCompatActivity {
             answerList.add(null);
         }
         answerList.set(questionIndex, selectedAnswer);
+
+//        for (int i = 0; i < answerList.size(); i++ ){
+//            Log.e("## User Answers", answerList.get(i) );
+//       }
+
         btnSkip.setEnabled(false);
         btnNext.setEnabled(true);
     }

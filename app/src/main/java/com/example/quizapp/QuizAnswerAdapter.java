@@ -20,7 +20,6 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
     int questionIndex;
     int selectedPosition = -1;
 
-
     public QuizAnswerAdapter(Context context, List<QuizAnswerModel> quizAnswerModels, int questionIndex) {
         this.context = context;
         this.quizAnswerModels = quizAnswerModels;
