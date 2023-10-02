@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class QuizStartActivity extends AppCompatActivity {
     QuizQuestionAdapter quizQuestionAdapter;
     TextView txtQuestionNumber, txtUserName;
     Button btnPrevious, btnNext, btnSkip, btnFinish, btnBack;
+    ImageView imgBack;
     int currentPosition = 0, correctCount = 0, wrongCount = 0, skipCount = 0;
 
     @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
@@ -68,6 +70,15 @@ public class QuizStartActivity extends AppCompatActivity {
         btnFinish = findViewById(R.id.btnFinish);
         btnPrevious = findViewById(R.id.btnPrevious);
         btnBack = findViewById(R.id.btnBack);
+        imgBack = findViewById(R.id.imgBack);
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(QuizStartActivity.this, QuizMainActivity.class);
+                startActivity(intent1);
+            }
+        });
 
         btnPrevious.setOnClickListener(view -> {
             if (currentPosition > 0) {
