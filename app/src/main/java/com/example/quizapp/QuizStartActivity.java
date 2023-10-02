@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -91,7 +92,7 @@ public class QuizStartActivity extends AppCompatActivity {
                 questionRecyclerView.scrollToPosition(currentPosition);
 //                    Toast.makeText(QuizStartActivity.this, "Clicked on Skip Button", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(QuizStartActivity.this, "Last Question Reached", Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuizStartActivity.this, "You can't Skip last Question. Last Question Reached", Toast.LENGTH_SHORT).show();
             }
             updateButtonVisibility();
         });
@@ -145,15 +146,15 @@ public class QuizStartActivity extends AppCompatActivity {
             txtResultRemarks = dialogView.findViewById(R.id.txtResultRemarks);
 
             if (scorePercentage >= 80) {
-                txtResultRemarks.setText("Excellent");
+                txtResultRemarks.setText("Excellent, You aced the Quiz.");
             } else if (scorePercentage >= 60) {
-                txtResultRemarks.setText("Good");
+                txtResultRemarks.setText("Good, You are getting better at it.");
             } else if (scorePercentage >= 40) {
-                txtResultRemarks.setText("OK");
+                txtResultRemarks.setText("OK, You should keep up the good work.");
             } else if (scorePercentage >= 20) {
-                txtResultRemarks.setText("Bad");
+                txtResultRemarks.setText("Bad, you Should Work Hard.");
             } else {
-                txtResultRemarks.setText("Very Bad");
+                txtResultRemarks.setText("Very Bad, You Failed the Quiz.");
             }
 
 //            builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss());
