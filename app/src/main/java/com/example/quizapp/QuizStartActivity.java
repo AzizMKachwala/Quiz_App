@@ -72,12 +72,10 @@ public class QuizStartActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         imgBack = findViewById(R.id.imgBack);
 
-        imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(QuizStartActivity.this, QuizMainActivity.class);
-                startActivity(intent1);
-            }
+        imgBack.setOnClickListener(view -> {
+            Intent intent1 = new Intent(QuizStartActivity.this, QuizMainActivity.class);
+            startActivity(intent1);
+            finish();
         });
 
         btnPrevious.setOnClickListener(view -> {
@@ -181,6 +179,7 @@ public class QuizStartActivity extends AppCompatActivity {
         btnBack.setOnClickListener(view -> {
             Intent intent1 = new Intent(QuizStartActivity.this, QuizMainActivity.class);
             startActivity(intent1);
+            finish();
         });
     }
 
@@ -189,13 +188,13 @@ public class QuizStartActivity extends AppCompatActivity {
             answerList.add(null);
         }
         answerList.set(questionIndex, selectedAnswer);
+        btnSkip.setEnabled(false);
+        btnNext.setEnabled(true);
 
 //        for (int i = 0; i < answerList.size(); i++ ){
 //            Log.e("## User Answers", answerList.get(i) );
 //       }
 
-        btnSkip.setEnabled(false);
-        btnNext.setEnabled(true);
     }
 
     private void updateButtonVisibility() {

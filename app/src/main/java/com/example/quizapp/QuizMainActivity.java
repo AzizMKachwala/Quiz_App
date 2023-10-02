@@ -30,6 +30,7 @@ public class QuizMainActivity extends AppCompatActivity {
                     Intent intent = new Intent(QuizMainActivity.this, QuizStartActivity.class);
                     intent.putExtra("userName", UserName);
                     startActivity(intent);
+                    finish();
                 }
                 else {
                     Toast.makeText(QuizMainActivity.this, "Enter Name First", Toast.LENGTH_SHORT).show();
