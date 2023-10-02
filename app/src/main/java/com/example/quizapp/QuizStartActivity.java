@@ -92,7 +92,7 @@ public class QuizStartActivity extends AppCompatActivity {
             if (currentPosition < quizQuestionModels.size() - 1) {
                 currentPosition++;
                 questionRecyclerView.scrollToPosition(currentPosition);
-//                    Toast.makeText(QuizStartActivity.this, "Clicked on Skip Button", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(QuizStartActivity.this, "Clicked on Skip Button", Toast.LENGTH_SHORT).show();aaa
             } else {
                 Toast.makeText(QuizStartActivity.this, "Last Question Reached", Toast.LENGTH_SHORT).show();
             }
