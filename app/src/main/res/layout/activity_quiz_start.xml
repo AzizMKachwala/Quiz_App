@@ -22,7 +22,6 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="left"
-            android:text="Aziz"
             android:textStyle="bold"/>
 
         <TextView
@@ -40,6 +39,7 @@
         android:id="@+id/questionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp" />
 
     <LinearLayout

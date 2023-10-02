@@ -41,9 +41,8 @@ public class QuizStartActivity extends AppCompatActivity {
 
         txtUserName.setText(UserName);
 
-        // To Stop the Scroll of RecyclerView
+//         To Stop the Scroll of RecyclerView
 //        questionRecyclerView.setOnTouchListener(new View.OnTouchListener() {
-//            @SuppressLint("ClickableViewAccessibility")
 //            @Override
 //            public boolean onTouch(View view, MotionEvent motionEvent) {
 //                return true;
@@ -53,7 +52,7 @@ public class QuizStartActivity extends AppCompatActivity {
         quizQuestionModels = QuizDataManager.getQuizQuestions();
         quizQuestionAdapter = new QuizQuestionAdapter(this, quizQuestionModels);
 
-        //  To Stop the Scroll of RecyclerView while initialization of it
+//          To Stop the Scroll of RecyclerView while initialization of it
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(QuizStartActivity.this, RecyclerView.HORIZONTAL, false) {
             @Override
             public boolean canScrollHorizontally() {
@@ -79,7 +78,6 @@ public class QuizStartActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(view -> {
-
             if (currentPosition < quizQuestionModels.size() - 1) {
                 currentPosition++;
                 questionRecyclerView.scrollToPosition(currentPosition);
@@ -123,14 +121,14 @@ public class QuizStartActivity extends AppCompatActivity {
                 }
             }
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(QuizStartActivity.this);
-            View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
-            builder.setView(dialogView);
-
             TextView txtDialogUserName, txtResultTotalQuestion, txtResultCorrectAnswerCount, txtResultWrongAnswerCount, txtResultSkipAnswerCount, txtResultScore, txtResultRemarks;
             Button btnOK;
             int totalQuestions = quizQuestionModels.size();
             double scorePercentage = (correctCount * 100) / totalQuestions;
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(QuizStartActivity.this);
+            View dialogView = getLayoutInflater().inflate(R.layout.result_dialog_item, null);
+            builder.setView(dialogView);
 
             txtResultTotalQuestion = dialogView.findViewById(R.id.txtResultTotalQuestion);
             txtResultCorrectAnswerCount = dialogView.findViewById(R.id.txtResultCorrectAnswerCount);
