@@ -18,8 +18,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
 
     Context context;
     List<QuizAnswerModel> quizAnswerModels;
-    int questionIndex;
-    int selectedPosition = -1;
+    int questionIndex,selectedPosition = -1;
     
     public QuizAnswerAdapter(Context context, List<QuizAnswerModel> quizAnswerModels, int questionIndex) {
         this.context = context;
@@ -45,6 +44,9 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         holder.itemView.setOnClickListener(v -> {
             selectedPosition = position;
             notifyDataSetChanged();
+
+            // add -> when moved to next after answering the Previous Question then the selected option
+            // should be collected and next button should be enabled
 
             if (context instanceof QuizStartActivity)
                 ((QuizStartActivity) context).onAnswerSelected(questionIndex, quizAnswerModel.getAnswer());

@@ -26,7 +26,6 @@ public class QuizMainActivity extends AppCompatActivity {
             String UserName = etvUserName.getText().toString().trim();
             if(!UserName.isEmpty()){
                 Intent intent = new Intent(QuizMainActivity.this, QuizStartActivity.class);
-                intent.putExtra("userName", UserName);
                 startActivity(intent);
                 finish();
             }
