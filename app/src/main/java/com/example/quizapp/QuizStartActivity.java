@@ -95,7 +95,6 @@ public class QuizStartActivity extends AppCompatActivity {
                 questionRecyclerView.scrollToPosition(currentPosition);
 //                  Toast.makeText(QuizStartActivity.this, "Clicked on Previous Button", Toast.LENGTH_SHORT).show();
             }
-            btnNext.setEnabled(true);
             updateButtonVisibility();
         });
 
