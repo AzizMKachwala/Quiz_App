@@ -22,19 +22,16 @@ public class QuizMainActivity extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnPlay);
         etvUserName = findViewById(R.id.etvUserName);
 
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String UserName = etvUserName.getText().toString().trim();
-                if(!UserName.isEmpty()){
-                    Intent intent = new Intent(QuizMainActivity.this, QuizStartActivity.class);
-                    intent.putExtra("userName", UserName);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    Toast.makeText(QuizMainActivity.this, "Enter Name First", Toast.LENGTH_SHORT).show();
-                }
+        btnPlay.setOnClickListener(view -> {
+            String UserName = etvUserName.getText().toString().trim();
+            if(!UserName.isEmpty()){
+                Intent intent = new Intent(QuizMainActivity.this, QuizStartActivity.class);
+                intent.putExtra("userName", UserName);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Toast.makeText(QuizMainActivity.this, "Enter Name First", Toast.LENGTH_SHORT).show();
             }
         });
     }
