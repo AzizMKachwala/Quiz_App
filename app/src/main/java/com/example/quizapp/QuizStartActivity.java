@@ -43,10 +43,10 @@ public class QuizStartActivity extends AppCompatActivity {
         txtTimer = findViewById(R.id.txtTimer);
 
         CountDownTimer countDownTimer = new CountDownTimer(20000, 1000) {
-            // for 7 Minutes 60000 * 7 (60,000 MiliSeconds = 60 Sec)
+            // for 7 Minutes 60000 * 7 (60,000 MS = 60 Sec)
             public void onTick(long millisUntilFinished) {
                 String text = String.format(Locale.getDefault(),"%02d:%02d", TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) % 60, TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) % 60);
-                txtTimer.setText(text +" Sec");
+                txtTimer.setText("Time : " + text);
             }
 
             public void onFinish() {
@@ -119,7 +119,6 @@ public class QuizStartActivity extends AppCompatActivity {
             updateButtonVisibility();
         });
 
-
         btnFinish.setOnClickListener(view -> showResult());
 
         btnBack.setOnClickListener(view -> {
@@ -148,6 +147,8 @@ public class QuizStartActivity extends AppCompatActivity {
                 } else {
                     wrongCount++;
                 }
+            } else {
+                skipCount++;
             }
         }
 
@@ -214,7 +215,7 @@ public class QuizStartActivity extends AppCompatActivity {
 
     }
 
-    private void updateButtonVisibility() {
+    public void updateButtonVisibility() {
         int totalQuestions = quizQuestionModels.size();
         String questionNumberText = String.format("(%d/%d)", currentPosition + 1, totalQuestions);
         txtQuestionNumber.setText(questionNumberText);

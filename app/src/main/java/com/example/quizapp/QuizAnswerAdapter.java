@@ -2,7 +2,6 @@ package com.example.quizapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +65,7 @@ public class QuizAnswerAdapter extends RecyclerView.Adapter<QuizAnswerAdapter.Qu
         return quizAnswerModels.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void clearSelection() {
         selectedPosition = -1;
         notifyDataSetChanged();
