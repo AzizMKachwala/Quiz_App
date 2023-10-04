@@ -46,6 +46,10 @@ public class QuizQuestionAdapter extends RecyclerView.Adapter<QuizQuestionAdapte
             QuizAnswerAdapter quizAnswerAdapter = (QuizAnswerAdapter) holder.answerRecyclerView.getAdapter();
             if (quizAnswerAdapter != null) {
                 quizAnswerAdapter.clearSelection();
+
+                if (context instanceof QuizStartActivity) {
+                    ((QuizStartActivity) context).enableSkipButton();
+                }
             }
         });
     }

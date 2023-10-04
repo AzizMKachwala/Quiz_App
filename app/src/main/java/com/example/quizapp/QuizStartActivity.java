@@ -207,6 +207,7 @@ public class QuizStartActivity extends AppCompatActivity {
         btnSkip.setEnabled(false);
         btnNext.setEnabled(true);
         answerList.set(questionIndex, selectedAnswer);
+        updateButtonVisibility();
 
 //        for (int i = 0; i < answerList.size(); i++ ){
 //            Log.e("## User Answers", answerList.get(i) );
@@ -219,11 +220,15 @@ public class QuizStartActivity extends AppCompatActivity {
         String questionNumberText = String.format("(%d/%d)", currentPosition + 1, totalQuestions);
         txtQuestionNumber.setText(questionNumberText);
 
-        btnNext.setEnabled(false);
-        btnSkip.setEnabled(true);
+        btnSkip.setEnabled(answerList.size() <= currentPosition || answerList.get(currentPosition) == null);
+        btnNext.setEnabled(answerList.size() > currentPosition && answerList.get(currentPosition) != null);
         btnPrevious.setVisibility(currentPosition > 0 ? View.VISIBLE : View.INVISIBLE);
-        btnNext.setVisibility(currentPosition < quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnFinish.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
         btnBack.setVisibility(currentPosition == quizQuestionModels.size() - 1 ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    public void enableSkipButton() {
+        btnSkip.setEnabled(true);
+        btnNext.setEnabled(false);
     }
 }
